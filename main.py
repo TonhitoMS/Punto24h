@@ -115,6 +115,7 @@ for i in sys.argv[1]:
 estadoAct = Clausura(estadoAct, Transicions, estados_totais, simbolos)
 estadoAct = list(set(estadoAct))
 estadoAct.sort()
+
 print("Estado final:")
 print(estadoAct)
 estadoFinal()
