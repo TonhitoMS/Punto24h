@@ -50,8 +50,6 @@ def Clausura(estadosE, Transicions, estados_totais, simbolos):
             estadosRes.append(estadosE[j])
     estadosRes = list(set(estadosRes))
     estadosRes.sort()
-    print("Estados Clausura:")
-    print(estadosRes)
     return estadosRes
 
 def estadoFinal():
@@ -85,6 +83,9 @@ while estadoAct != estadoC:
     estadoAct = Clausura(estadoAct, Transicions, estados_totais, simbolos)
     estadoC = Clausura(estadoAct, Transicions, estados_totais, simbolos)
 
+print("Estados Clausura:")
+print(estadoAct)
+
 for i in sys.argv[1]:
     print("\n********* Nova entrada *********")
     print("Entrada: " + i)
@@ -95,6 +96,9 @@ for i in sys.argv[1]:
     while estadoAct != estadoC:
         estadoAct = Clausura(estadoAct, Transicions, estados_totais, simbolos)
         estadoC = Clausura(estadoAct, Transicions, estados_totais, simbolos)
+    print("Estados Clausura:")
+    print(estadoAct)
+
     for j in range(0, len(estadoAct)):
         #print("j = " + str(j))
         #print("Estado actual " + estadoAct[j])
