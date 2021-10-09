@@ -8,7 +8,7 @@ simbolos = []
 Transicions = []
 
 def ProcesarTexto():
-    with open('machine.txt', 'r', encoding='utf-8') as mi_fichero:
+    with open(sys.argv[2], 'r', encoding='utf-8') as mi_fichero:
 
         estados_totais = mi_fichero.readline().replace('\n', '').split(' ')[1:]
         estados_finais = mi_fichero.readline().replace('\n', '').split(' ')[1:]
@@ -74,20 +74,27 @@ print(Transicions[0])
 
 
 estadoAct = []
+estadoC = []
 estadoAct.append(estados_totais[0])
 # estadoAct = ['A', 'B']
 # print(estadoAct)
 # estadoAct = Clausura(estadoAct, Transicions, estados_totais, simbolos)
 # print(estadoAct)
-estadoAct = Clausura(estadoAct, Transicions, estados_totais, simbolos)
+#estadoAct = Clausura(estadoAct, Transicions, estados_totais, simbolos)
+while estadoAct != estadoC:
+    estadoAct = Clausura(estadoAct, Transicions, estados_totais, simbolos)
+    estadoC = Clausura(estadoAct, Transicions, estados_totais, simbolos)
+
 for i in sys.argv[1]:
     print("\n********* Nova entrada *********")
     print("Entrada: " + i)
     v = []
     v.append(i)
-    #print(estadoAct)
+    print(estadoAct)
     estadoAux = []
-    estadoAct = Clausura(estadoAct, Transicions, estados_totais, simbolos)
+    while estadoAct != estadoC:
+        estadoAct = Clausura(estadoAct, Transicions, estados_totais, simbolos)
+        estadoC = Clausura(estadoAct, Transicions, estados_totais, simbolos)
     for j in range(0, len(estadoAct)):
         #print("j = " + str(j))
         #print("Estado actual " + estadoAct[j])
