@@ -7,6 +7,8 @@ estados_finais = []
 simbolos = []
 Transicions = []
 
+#función que procesa o ficheiro e almacena en variables os distintos
+#compoñentes da definición dun autómata
 def ProcesarTexto():
     with open(sys.argv[1], 'r', encoding='utf-8') as mi_fichero:
 
@@ -24,6 +26,7 @@ def ProcesarTexto():
                 Transicions.append(linea.replace('\n', '').split("#"))
     return estados_finais, estados_totais, simbolos
 
+#Método que realiza as transcións coa cadea baleira dun conxunto de estados dado
 def Clausura(estadosE, Transicions, estados_totais, simbolos):
     estadosRes = []
     #print("Clausura")
@@ -52,6 +55,8 @@ def Clausura(estadosE, Transicions, estados_totais, simbolos):
     estadosRes.sort()
     return estadosRes
 
+#función que comproba se algún estado do conxunto de estados
+#é un estado final do autómata
 def estadoFinal():
     for e in estadoAct:
         if e in estados_finais:
@@ -78,6 +83,8 @@ estadoAct.append(estados_totais[0])
 # estadoAct = Clausura(estadoAct, Transicions, estados_totais, simbolos)
 # print(estadoAct)
 #estadoAct = Clausura(estadoAct, Transicions, estados_totais, simbolos)
+
+#clausura do estado inicial
 while estadoAct != estadoC:
     estadoAct = Clausura(estadoAct, Transicions, estados_totais, simbolos)
     estadoC = Clausura(estadoAct, Transicions, estados_totais, simbolos)
@@ -85,6 +92,8 @@ while estadoAct != estadoC:
 print("Estados Clausura:")
 print(estadoAct)
 
+#bucle principal que procesa a cadea de entrada e os estados
+#nos que se encontra o autómata en cada momento
 for i in sys.argv[2]:
     print("\n********* Nova entrada *********")
     print("Entrada: " + i)
@@ -95,8 +104,8 @@ for i in sys.argv[2]:
     # while estadoAct != estadoC:
     #     estadoAct = Clausura(estadoAct, Transicions, estados_totais, simbolos)
     #     estadoC = Clausura(estadoAct, Transicions, estados_totais, simbolos)
-    print("Estados Clausura:")
-    print(estadoAct)
+    # print("Estados Clausura:")
+    # print(estadoAct)
 
     for j in range(0, len(estadoAct)):
         #print("j = " + str(j))
@@ -119,12 +128,14 @@ for i in sys.argv[2]:
     while estadoAct != estadoC:
         estadoAct = Clausura(estadoAct, Transicions, estados_totais, simbolos)
         estadoC = Clausura(estadoAct, Transicions, estados_totais, simbolos)
+    # print("Estados Clausura:")
+    # print(estadoAct)
     print("Estado final da iteracción")
     print(estadoAct)
     estadoFinal()
     print("********************************\n")
 
-estadoAct = Clausura(estadoAct, Transicions, estados_totais, simbolos)
+#estadoAct = Clausura(estadoAct, Transicions, estados_totais, simbolos)
 estadoAct = list(set(estadoAct))
 estadoAct.sort()
 
