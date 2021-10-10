@@ -74,6 +74,9 @@ while estadoAct != estadoC:
 #bucle principal que procesa a cadea de entrada e os estados
 #nos que se encontra o autómata en cada momento
 for i in sys.argv[2]:
+    if i not in simbolos:
+        print("Símbolo " + i + " non recoñecido\nFinal do programa\n")
+        exit()
     print("\n********* Nova entrada *********")
     print("Entrada: " + i)
     v = []
