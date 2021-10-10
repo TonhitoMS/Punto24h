@@ -92,9 +92,9 @@ for i in sys.argv[2]:
     v.append(i)
     print(estadoAct)
     estadoAux = []
-    while estadoAct != estadoC:
-        estadoAct = Clausura(estadoAct, Transicions, estados_totais, simbolos)
-        estadoC = Clausura(estadoAct, Transicions, estados_totais, simbolos)
+    # while estadoAct != estadoC:
+    #     estadoAct = Clausura(estadoAct, Transicions, estados_totais, simbolos)
+    #     estadoC = Clausura(estadoAct, Transicions, estados_totais, simbolos)
     print("Estados Clausura:")
     print(estadoAct)
 
@@ -116,7 +116,9 @@ for i in sys.argv[2]:
         #print("Estado actual")
         #print(estadoAct)
     estadoAct = estadoAux
-    #estadoAct = Clausura(estadoAct, Transicions, estados_totais, simbolos)
+    while estadoAct != estadoC:
+        estadoAct = Clausura(estadoAct, Transicions, estados_totais, simbolos)
+        estadoC = Clausura(estadoAct, Transicions, estados_totais, simbolos)
     print("Estado final da iteracción")
     print(estadoAct)
     estadoFinal()
