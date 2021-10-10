@@ -58,7 +58,6 @@ estados_finais, estados_totais, simbolos = ProcesarTexto()
 max = len(Transicions[0])
 for j in Transicions:
     del j[max-1]
-print(Transicions[0])
 
 estadoAct = []
 estadoC = []
