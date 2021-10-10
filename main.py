@@ -54,6 +54,10 @@ def estadoFinal():
             print("Estado de aceptación: " + e)
 
 
+if len(sys.argv) != 3:
+    print("Número de argumentos incorrecto. Escriba python3 main.py nome_do_arquivo cadea_de_entrada")
+    exit()
+
 estados_finais, estados_totais, simbolos = ProcesarTexto()
 max = len(Transicions[0])
 for j in Transicions:
