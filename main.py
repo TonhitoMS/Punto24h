@@ -62,14 +62,14 @@ for j in Transicions:
 estadoAct = []
 estadoC = []
 estadoAct.append(estados_totais[0])
+print("Estado Inicial:")
+print(estadoAct)
 
 #clausura do estado inicial
 while estadoAct != estadoC:
     estadoAct = Clausura(estadoAct, Transicions, estados_totais, simbolos)
     estadoC = Clausura(estadoAct, Transicions, estados_totais, simbolos)
 
-print("Estados Clausura:")
-print(estadoAct)
 
 #bucle principal que procesa a cadea de entrada e os estados
 #nos que se encontra o autómata en cada momento
